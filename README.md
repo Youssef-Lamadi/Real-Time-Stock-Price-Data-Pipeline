@@ -1,96 +1,84 @@
-# Real Time Stock Price Data Pipeline
+# Real Time Stock Price ETL Data Pipeline
 
 This repository contains the implementation of a real-time stock price ETL (Extract, Transform, Load) pipeline using Yahoo Finance API, Python, MongoDB, and Apache Airflow. The pipeline processes stock data from major companies, performs transformations, and loads the data into a MongoDB Atlas database. Finally, the data is visualized using Power BI.
 
-Architecture Overview
-
+## Architecture Overview
 
 
 The architecture includes the following steps:
+1. **Extract:** Retrieve real time stock data using the Yahoo Finance API.
+2. **Transform:** Process the data in Python to calculate moving averages and daily returns.
+3. **Load:** Store the processed data into MongoDB Atlas.
+4. **Visualize:** Use Power BI to create dashboards and insights from the data.
 
-Extract: Retrieve real-time stock data using the Yahoo Finance API.
+## Features
+- Extracts stock data for 17 major companies (e.g., Apple, Nvidia, Microsoft).
+- Calculates technical indicators, including 5-day and 30-day moving averages.
+- Computes daily percentage returns for each stock. 
+- Stores the processed data in MongoDB Atlas for persistence and visualization.
 
-Transform: Process the data in Python to calculate moving averages and daily returns.
+## Technologies Used
+- **Python** for data extraction and transformation.
+- **Yahoo Finance API** for fetching real-time stock data.
+- **MongoDB Atlas** for storing and querying stock data.
+- **Apache Airflow** for scheduling and automating the ETL pipeline.
+- **Power BI** for data visualization.
 
-Load: Store the processed data into MongoDB Atlas.
+## Project Setup
 
-Visualize: Use Power BI to create dashboards and insights from the data.
+### Prerequisites
+- Python 3.7+
+- MongoDB Atlas account
+- Power BI desktop (for visualization)
+- Libraries: `yfinance`, `pandas`, `pymongo`, `datetime`
 
-Features
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Youssef-Lamadi/Real-Time-Stock-Price-Data-Pipeline.git
+   cd Real-Time-Stock-Price-Data-Pipeline
+   ```
 
-Extracts stock data for 17 major companies (e.g., Apple, Nvidia, Microsoft).
+2. Install dependencies:
+   ```bash
+   pip install yfinance pandas pymongo
+   ```
 
-Calculates technical indicators, including 5-day and 30-day moving averages.
+3. Configure MongoDB Atlas:
+   - Create a cluster on MongoDB Atlas.
+   - Replace the connection string in the code with your MongoDB credentials.
 
-Computes daily percentage returns for each stock.
+4. Run the ETL pipeline:
+   ```bash
+   python getDataFromMarket_LoadToMngDBAtlas.py
+   ```
 
-Stores the processed data in MongoDB Atlas for persistence and visualization.
+5. Set up Power BI:
+   - Connect Power BI to MongoDB Atlas.
+   - Design your dashboard using the processed stock data.
 
-Technologies Used
-
-Python for data extraction and transformation.
-
-Yahoo Finance API for fetching real-time stock data.
-
-MongoDB Atlas for storing and querying stock data.
-
-Apache Airflow for scheduling and automating the ETL pipeline.
-
-Power BI for data visualization.
-
-Project Setup
-
-Prerequisites
-
-Python 3.7+
-
-MongoDB Atlas account
-
-Power BI desktop (for visualization)
-
-Libraries: yfinance, pandas, pymongo, datetime
-
-Installation
-
-Clone the repository:
-
-git clone https://github.com/yourusername/real-time-stock-etl.git
-cd real-time-stock-etl
-
-Install dependencies:
-
-pip install yfinance pandas pymongo
-
-Configure MongoDB Atlas:
-
-Create a cluster on MongoDB Atlas.
-
-Replace the connection string in the code with your MongoDB credentials.
-
-Run the ETL pipeline:
-
-python etl_pipeline.py
-
-Set up Power BI:
-
-Connect Power BI to MongoDB Atlas.
-
-Design your dashboard using the processed stock data.
-
-Code Explanation
-
+## Code Explanation
 The main steps in the code:
+1. **Extract Data:**
+   - Use the Yahoo Finance API to fetch stock prices for the last two years for a predefined list of companies.
 
-Extract Data:
+2. **Transform Data:**
+   - Add 5-day and 30-day moving averages.
+   - Calculate daily returns and clean missing values.
 
-Use the Yahoo Finance API to fetch stock prices for the last two years for a predefined list of companies.
+3. **Load Data:**
+   - Store the processed data in MongoDB Atlas, replacing old data.
 
-Transform Data:
+## Future Enhancements
+- Implement additional indicators like RSI and MACD.
+- Automate pipeline scheduling using Apache Airflow.
+- Integrate real-time notifications for significant stock price changes.
 
-Add 5-day and 30-day moving averages.
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-Calculate daily returns and clean missing values.
+## Contact
+For questions or collaboration, feel free to contact:
+- **Email:** yousseflamadi3@gmail.com
+- **LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/youssef-lamadi-0257b6261/)
 
-Load Data:
-
-Store the processed data in MongoDB Atlas, replacing old data.
